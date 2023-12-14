@@ -16,5 +16,5 @@ class ChatController(private val chatService: ChatService) {
     }
 
     @GetMapping("/messages")
-    fun getMessages(): List<Message> = chatService.messages
+    fun getMessages(): List<Message> = messages
 }
