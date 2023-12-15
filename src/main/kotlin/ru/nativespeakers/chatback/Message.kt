@@ -15,7 +15,7 @@ data class MessageDTO(
 )
 
 fun convertMessageDtoToMessage(messageDTO: MessageDTO) = Message(
-    id = (messages.size + 1).toLong(),
+    id = messages.size.toLong(),
     message = messageDTO.message,
     sender = messageDTO.sender,
     date = Date()
