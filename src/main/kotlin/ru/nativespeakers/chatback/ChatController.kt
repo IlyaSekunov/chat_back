@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/chat")
-class ChatController(private val chatService: ChatService) {
+class ChatController {
     @PostMapping("/send")
-    fun sendMessage(@RequestBody messageDTO: MessageDTO) {
-        val message = convertMessageDtoToMessage(messageDTO)
-        chatService.sendMessage(message)
-    }
+    fun sendMessage(@RequestBody messageDTO: MessageDTO) =
+        synchronized(messages) {
+            messages.add(messageDTO.toMessage())
+        }
 
     @GetMapping("/messages")
     fun getMessages(): List<Message> = messages

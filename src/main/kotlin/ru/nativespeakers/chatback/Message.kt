@@ -14,9 +14,9 @@ data class MessageDTO(
     val message: String
 )
 
-fun convertMessageDtoToMessage(messageDTO: MessageDTO) = Message(
+fun MessageDTO.toMessage() = Message(
     id = messages.size.toLong(),
-    message = messageDTO.message,
-    sender = messageDTO.sender,
+    message = message,
+    sender = sender,
     date = Date()
 )
